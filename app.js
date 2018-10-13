@@ -8,8 +8,9 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 
 const auth = require('./routes/auth');
-const patient = require('../models/patient');
-const history = require('../models/history');
+const patient = require('./models/patient');
+const history = require('./models/history');
+const user = require('./models/user');
 
 mongoose.connect('mongodb://hilaring:Patata12*@ds225703.mlab.com:25703/ih-project-3')
 
@@ -47,7 +48,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', auth);
 app.use('/patient', patient);
-app.use('/history', history)
+app.use('/history', history);
+app.use('/user', user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
