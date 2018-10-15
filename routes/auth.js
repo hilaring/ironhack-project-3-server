@@ -6,7 +6,7 @@ const User = require('../models/user');
 const { isLoggedIn } = require('../helpers/is-logged');
 
 router.get('/me', (req, res, next) => {
-  // console.log('me', req.session.currentUser);
+  console.log('me', req.session.currentUser);
   if (req.session.currentUser) {
     res.json(req.session.currentUser);
   } else {
@@ -58,10 +58,13 @@ router.post('/login', (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   const {
     username,
+    name,
+    lastname,
+    email,
     password
   } = req.body;
 
-  if (!username || !password) {
+  if (!username || !password ) {
     return res.status(422).res.json({
       error: 'empty'
     });
@@ -82,6 +85,9 @@ router.post('/signup', (req, res, next) => {
 
       const newUser = User({
         username,
+        name,
+        lastname,
+        email,
         password: hashPass,
       });
 

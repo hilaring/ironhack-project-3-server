@@ -1,21 +1,17 @@
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
-
 const auth = require('./routes/auth');
-const patient = require('../models/patient');
-const history = require('../models/history');
 
 mongoose.connect('mongodb://hilaring:Patata12*@ds225703.mlab.com:25703/ih-project-3')
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => console.log(`Connected to auth-react database`));
+db.once('open', () => console.log(`Connected to ih-project database`));
 
 const app = express();
 
@@ -46,8 +42,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', auth);
-app.use('/patient', patient);
-app.use('/history', history)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
