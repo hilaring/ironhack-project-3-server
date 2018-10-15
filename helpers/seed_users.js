@@ -11,11 +11,18 @@ User.collection.drop();
 
 const users = [
   {
-    username: 'admin',
-    name: 'admin',
-    lastname: 'admin',
-    email: 'admin@admin.com',
-    password: bcrypt.hashSync('123', salt).toString(),
+    username: 'hilaring',
+    name: 'Oriol',
+    lastname: 'Hilari',
+    email: 'orihil@gmail.com',
+    password: bcrypt.hashSync('1234', salt).toString(),
+  },
+  {
+    username: 'pere',
+    name: 'Pere',
+    lastname: 'Busquet',
+    email: 'perebusquet@gmail.com',
+    password: bcrypt.hashSync('1234', salt).toString(),
   },
 ];
 
