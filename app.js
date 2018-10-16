@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(session({
-  secret: 'react auth secret shh',
+  secret: 'react ironhack project',
   resave: true,
   saveUninitialized: true,
   cookie: { httpOnly: true, maxAge: 60000 },

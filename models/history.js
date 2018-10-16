@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const historySchema = new Schema ({
+  Date: String,
   Syntoms: { type: String, required: true, index: { unique: true }},
   Disease: { type: String },
   Prescription: {type:String}
