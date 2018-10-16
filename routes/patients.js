@@ -3,8 +3,6 @@ var router = express.Router();
 
 const Patient = require('../models/patient')
 
-const upload = require('../config/multer');
-
 /* GET users listing. */
 
 router.get('/patients', function(req, res, next) {
@@ -18,7 +16,7 @@ router.get('/patients', function(req, res, next) {
   })
 });
 
-router.post('/patients', upload.single('file'), function(req, res, next) {
+router.post('/patients', function(req, res, next) {
   console.log('body', req.body);
   
   var newPatient = new Patient( {
@@ -27,7 +25,6 @@ router.post('/patients', upload.single('file'), function(req, res, next) {
     email: req.body.email,
     number: req.body.number,
     adress: req.body.adress,
-    visit: [],
   } )
 
   newPatient.save( function(err) {
@@ -63,7 +60,6 @@ router.put('/patients/:id', function(req, res, next) {
     email: req.body.email,
     number: req.body.number,
     adress: req.body.adress,
-    visit: [],
     }
 
   Patient.findByIdAndUpdate(id, patientToUpdate, function(err){
