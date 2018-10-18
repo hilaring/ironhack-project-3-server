@@ -6,9 +6,7 @@ const Patient = require('../models/patient')
 /* GET users listing. */
 
 router.get('/', function (req, res, next) {
-  console.log("JODER")
   Patient.find({}, function (err, patientList) {
-    console.log("JODER")
     if (err) {
       res.json(err)
     } else {
@@ -18,7 +16,7 @@ router.get('/', function (req, res, next) {
   })
 });
 
-router.post('/patients', function (req, res, next) {
+router.post('/', function (req, res, next) {
   console.log('body', req.body);
 
   var newPatient = new Patient({
@@ -41,7 +39,7 @@ router.post('/patients', function (req, res, next) {
   })
 })
 
-router.get('/patients/:id', function (req, res, next) {
+router.get('/:id', function (req, res, next) {
 
   var id = req.params.id
 
@@ -54,7 +52,7 @@ router.get('/patients/:id', function (req, res, next) {
   })
 })
 
-router.put('/patients/:id', function (req, res, next) {
+router.put('/:id', function (req, res, next) {
   var id = req.params.id;
   var patientToUpdate = {
     name: req.body.name,
@@ -73,7 +71,7 @@ router.put('/patients/:id', function (req, res, next) {
   })
 })
 
-router.delete('/patients/:id', function (req, res, next) {
+router.delete('/:id', function (req, res, next) {
   var id = req.params.id
 
   Patient.remove({ _id: id }, function (err) {
