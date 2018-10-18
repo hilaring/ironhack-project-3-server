@@ -8,7 +8,7 @@ const session = require('express-session');
 const auth = require('./routes/auth');
 const patients = require('./routes/patients');
 
-mongoose.connect('mongodb://hilaring:Patata12*@ds225703.mlab.com:25703/ih-project-3')
+mongoose.connect('mongodb://hilaring:Patata12*@ds225703.mlab.com:25703/ih-project-3');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
