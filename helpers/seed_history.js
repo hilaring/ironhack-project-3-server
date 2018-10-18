@@ -12,7 +12,12 @@ const Histories = [
     Disease: 'Migraña',
     Prescription: 'Paracetamol',
   }, 
- 
+  {
+    Date: '2018-10-18',
+    Syntoms: 'Dolor en la pierna',
+    Disease: 'Esguince',
+    Prescription: 'Calmante',
+  }, 
 ];
 
 History.create(Histories, (err) => {
