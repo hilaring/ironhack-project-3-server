@@ -5,9 +5,11 @@ const Patient = require('../models/patient')
 
 /* GET users listing. */
 
-router.get('/patients', function(req, res, next) {
-  Patient.find({}, function(err, patientList) {
-    if( err) {
+router.get('/', function (req, res, next) {
+  console.log("JODER")
+  Patient.find({}, function (err, patientList) {
+    console.log("JODER")
+    if (err) {
       res.json(err)
     } else {
       console.log(patientList)
@@ -16,19 +18,19 @@ router.get('/patients', function(req, res, next) {
   })
 });
 
-router.post('/patients', function(req, res, next) {
+router.post('/patients', function (req, res, next) {
   console.log('body', req.body);
-  
-  var newPatient = new Patient( {
+
+  var newPatient = new Patient({
     name: req.body.name,
     last_name: req.body.last_name,
     email: req.body.email,
     number: req.body.number,
     adress: req.body.adress,
-  } )
+  })
 
-  newPatient.save( function(err) {
-    if(err) {
+  newPatient.save(function (err) {
+    if (err) {
       res.json(err)
     } else {
       res.json({
@@ -39,12 +41,12 @@ router.post('/patients', function(req, res, next) {
   })
 })
 
-router.get('/patients/:id', function(req, res, next) {
+router.get('/patients/:id', function (req, res, next) {
 
   var id = req.params.id
 
-  Patient.findById( id, function(err, patient){
-    if(err){
+  Patient.findById(id, function (err, patient) {
+    if (err) {
       res.json(err)
     } else {
       res.json(patient)
@@ -52,7 +54,7 @@ router.get('/patients/:id', function(req, res, next) {
   })
 })
 
-router.put('/patients/:id', function(req, res, next) {
+router.put('/patients/:id', function (req, res, next) {
   var id = req.params.id;
   var patientToUpdate = {
     name: req.body.name,
@@ -60,22 +62,22 @@ router.put('/patients/:id', function(req, res, next) {
     email: req.body.email,
     number: req.body.number,
     adress: req.body.adress,
-    }
+  }
 
-  Patient.findByIdAndUpdate(id, patientToUpdate, function(err){
-    if(err) {
+  Patient.findByIdAndUpdate(id, patientToUpdate, function (err) {
+    if (err) {
       res.json(err)
     } else {
-      res.json({message: "updated"})
+      res.json({ message: "updated" })
     }
   })
 })
 
-router.delete('/patients/:id', function(req, res, next) {
+router.delete('/patients/:id', function (req, res, next) {
   var id = req.params.id
 
-  Patient.remove({ _id: id }, function(err){
-    if(err) {
+  Patient.remove({ _id: id }, function (err) {
+    if (err) {
       res.json(err);
     } else {
       res.json({ message: "deleted" });
