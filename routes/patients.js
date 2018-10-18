@@ -6,11 +6,11 @@ const Patient = require('../models/patient')
 /* GET users listing. */
 
 router.get('/patients', function(req, res, next) {
-
   Patient.find({}, function(err, patientList) {
     if( err) {
       res.json(err)
     } else {
+      console.log(patientList)
       res.status(200).json(patientList)
     }
   })
