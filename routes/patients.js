@@ -19,21 +19,21 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   console.log('body', req.body);
 
-  var newPatient = new Patient({
+  const newPatient = {
     name: req.body.name,
     last_name: req.body.last_name,
     email: req.body.email,
     number: req.body.number,
     adress: req.body.adress,
-  })
+  }
 
-  newPatient.save(function (err) {
+  Patient.save(newPatient, function (err, result) {
     if (err) {
       res.json(err)
     } else {
       res.json({
         message: "created",
-        patient: newPatient
+        patient: result
       })
     }
   })
