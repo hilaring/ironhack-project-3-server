@@ -10,7 +10,6 @@ router.get('/', function (req, res, next) {
     if (err) {
       res.json(err)
     } else {
-      console.log(patientList)
       res.status(200).json(patientList)
     }
   })
