@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const Patient = require('../models/patient')
+const History = require('../models/history')
 
 /* GET users listing. */
 
 router.get('/', function (req, res, next) {
-  Patient.find({}, function (err, patientList) {
+  History.find({}, function (err, historyList) {
     if (err) {
       res.json(err)
     } else {
-      res.status(200).json(patientList)
+      res.status(200).json(historyList)
     }
   })
 });
@@ -18,21 +18,20 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   console.log('body', req.body);
 
-  const newPatient = new Patient({
-    name: req.body.name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    number: req.body.number,
-    adress: req.body.adress,
+  const newHistory = new History({
+    syntoms: req.body.syntoms,
+    disease: req.body.disease,
+    prescription: req.body.prescription,
+   
   })
 
-  newPatient.save(function (err) {
+  newHistory.save(function (err) {
     if (err) {
       res.json(err)
     } else {
       res.json({
         message: "created",
-        patient: newPatient
+        history: newHistory
       })
     }
   })
@@ -42,26 +41,25 @@ router.get('/:id', function (req, res, next) {
 
   const id = req.params.id
 
-  Patient.findById(id, function (err, patient) {
+  History.findById(id, function (err, history) {
     if (err) {
       res.json(err)
     } else {
-      res.json(patient)
+      res.json(history)
     }
   })
 })
 
 router.put('/:id', function (req, res, next) {
   const id = req.params.id;
-  const patientToUpdate = {
-    name: req.body.name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    number: req.body.number,
-    adress: req.body.adress,
+  const historyToUpdate = {
+    syntoms: req.body.syntoms,
+    disease: req.body.disease,
+    prescription: req.body.prescription,
+   
   }
 
-  Patient.findByIdAndUpdate(id, patientToUpdate, function (err) {
+  History.findByIdAndUpdate(id, historyToUpdate, function (err) {
     if (err) {
       res.json(err)
     } else {
@@ -73,7 +71,7 @@ router.put('/:id', function (req, res, next) {
 router.delete('/:id', function (req, res, next) {
   const id = req.params.id
 
-  Patient.remove({ _id: id }, function (err) {
+  History.remove({ _id: id }, function (err) {
     if (err) {
       res.json(err);
     } else {

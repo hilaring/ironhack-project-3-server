@@ -10,6 +10,7 @@ const MongoStore = require('connect-mongo')(session);
 // Routes
 const auth = require('./routes/auth');
 const patients = require('./routes/patients');
+const history = require('./routes/history');
 
 mongoose.connect('mongodb://hilaring:Patata12*@ds225703.mlab.com:25703/ih-project-3');
 
@@ -53,6 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', auth);
 app.use('/patients', patients);
+app.use('/history',history);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
