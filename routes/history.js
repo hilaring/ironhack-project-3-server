@@ -10,6 +10,7 @@ router.get('/', function (req, res, next) {
     if (err) {
       res.json(err)
     } else {
+      console.log(historyList)
       res.status(200).json(historyList)
     }
   })
@@ -51,11 +52,19 @@ router.get('/:id', function (req, res, next) {
 })
 
 router.put('/:id', function (req, res, next) {
+<<<<<<< HEAD
   const id = req.params.id;
   const historyToUpdate = {
     syntoms: req.body.syntoms,
     disease: req.body.disease,
     prescription: req.body.prescription,
+=======
+  var id = req.params.id;
+  var historyToUpdate = {
+    syntoms: req.body.syntoms,
+    disease:req.body.disease,
+    prescription:req.body.prescription,
+>>>>>>> c8afc03df4a35d08b2d891153f41ffada8b96acd
    
   }
 
@@ -69,7 +78,11 @@ router.put('/:id', function (req, res, next) {
 })
 
 router.delete('/:id', function (req, res, next) {
+<<<<<<< HEAD
   const id = req.params.id
+=======
+  var id = req.params.id
+>>>>>>> c8afc03df4a35d08b2d891153f41ffada8b96acd
 
   History.remove({ _id: id }, function (err) {
     if (err) {
