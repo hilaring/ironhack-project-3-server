@@ -7,8 +7,12 @@ const patientSchema = new Schema({
     email: { type: String },
     number: { type: Number },
     adress: { type: String },
-  }
-);
+  }, {
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
+    },
+});
   
   const Patient = mongoose.model('Patient', patientSchema);
   

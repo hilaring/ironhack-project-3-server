@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const historySchema = new Schema ({
-  Date: String,
-  Syntoms: { type: String, required: true, index: { unique: true }},
-  Disease: { type: String },
-  Prescription: {type:String}
+  syntoms: { type: String,},
+  disease: { type: String },
+  prescription: {type:String }
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -13,6 +12,6 @@ const historySchema = new Schema ({
   },
 });
 
-const History = mongoose.model('History', historySchema);
+const Histo = mongoose.model('Histo', historySchema);
 
-module.exports = History;
+module.exports = Histo;
