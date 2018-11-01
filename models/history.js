@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const historySchema = new Schema ({
   syntoms: { type: String,},
   disease: { type: String },
-  prescription: {type:String }
+  prescription: {type:String },
+  default: {type:String ,default: "hola"},
 }, {
   timestamps: {
     createdAt: 'created_at',
