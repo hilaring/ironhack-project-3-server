@@ -16,7 +16,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  console.log('patata')
   console.log('body', req.body);
 
   const newHistory = new Histo({
