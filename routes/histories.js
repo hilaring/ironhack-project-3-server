@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
     } else {
       res.status(200).json(historyList)
     }
-  })
+  }).populate('patient');
 });
 
 router.post('/', function (req, res, next) {
