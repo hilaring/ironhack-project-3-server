@@ -12,7 +12,8 @@ const auth = require('./routes/auth');
 const patients = require('./routes/patients');
 const histories = require('./routes/histories');
 
-mongoose.connect('mongodb://hilaring:Patata12*@ds225703.mlab.com:25703/ih-project-3');
+// mongoose.connect('mongodb://hilaring:Patata12*@ds225703.mlab.com:25703/ih-project-3');
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -21,7 +22,7 @@ db.once('open', () => console.log(`Connected to ih-project-3 database`));
 const app = express();
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', 'https://imedic-a181d.firebaseapp.com/login');
   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,OPTIONS,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
