@@ -50,6 +50,13 @@ router.get('/:id', function (req, res, next) {
       res.json(patient)
     }
   })
+
+  Patient.findById(id)
+    .populate('histories')
+    .then((result) =>{
+      console.log(result)
+      res.json(patient)
+    })
 })
 
 router.put('/:id', function (req, res, next) {

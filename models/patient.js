@@ -1,18 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const patientSchema = new Schema({
     name: { type: String },
     last_name: { type: String },
     email: { type: String },
     number: { type: Number },
     adress: { type: String },
-    histories: [
-      {
-        syntoms: String,
-        desease: String,
-        prescription: String,
-       }]
+    histories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Histo' }],
   }, {
     timestamps: {
       createdAt: 'created_at',
