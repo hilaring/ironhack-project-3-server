@@ -7,6 +7,12 @@ const patientSchema = new Schema({
     email: { type: String },
     number: { type: Number },
     adress: { type: String },
+    histories: [
+      {
+        syntoms: String,
+        desease: String,
+        prescription: String,
+       }]
   }, {
     timestamps: {
       createdAt: 'created_at',

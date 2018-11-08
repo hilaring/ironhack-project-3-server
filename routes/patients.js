@@ -24,6 +24,7 @@ router.post('/', function (req, res, next) {
     email: req.body.email,
     number: req.body.number,
     adress: req.body.adress,
+    histories: [],
   })
 
   newPatient.save(function (err) {
@@ -59,6 +60,7 @@ router.put('/:id', function (req, res, next) {
     email: req.body.email,
     number: req.body.number,
     adress: req.body.adress,
+    histories: [],
   }
 
   Patient.findByIdAndUpdate(id, patientToUpdate, function (err) {
