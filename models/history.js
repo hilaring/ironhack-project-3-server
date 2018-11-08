@@ -3,11 +3,9 @@ const Schema = mongoose.Schema;
 
 
 const historySchema = new Schema ({
-  patient: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient'},
   syntoms: { type: String,},
   disease: { type: String },
   prescription: {type:String },
-  default: {type:String ,default: "hola"},
 }, {
   timestamps: {
     createdAt: 'created_at',

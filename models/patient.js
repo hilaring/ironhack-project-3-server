@@ -8,7 +8,7 @@ const patientSchema = new Schema({
     email: { type: String },
     number: { type: Number },
     adress: { type: String },
-    histories: { type: mongoose.Schema.Types.ObjectId, ref: 'Histo' },
+    histories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Histo' }],
   }, {
     timestamps: {
       createdAt: 'created_at',

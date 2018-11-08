@@ -24,6 +24,7 @@ router.post('/', function (req, res, next) {
     email: req.body.email,
     number: req.body.number,
     adress: req.body.adress,
+    histories: [],
   })
 
   newPatient.save(function (err) {
@@ -49,6 +50,13 @@ router.get('/:id', function (req, res, next) {
       res.json(patient)
     }
   })
+
+  Patient.findById(id)
+    .populate('histories')
+    .then((result) =>{
+      console.log(result)
+      res.json(patient)
+    })
 })
 
 router.put('/:id', function (req, res, next) {

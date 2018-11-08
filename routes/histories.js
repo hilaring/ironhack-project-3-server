@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const Patient = require('../models/patient')
 const Histo = require('../models/history')
 
 /* GET users listing. */
@@ -12,28 +12,37 @@ router.get('/', function (req, res, next) {
     } else {
       res.status(200).json(historyList)
     }
-  }).populate('patient');
+  });
 });
 
 router.post('/', function (req, res, next) {
-  console.log('body', req.body);
 
   const newHistory = new Histo({
     syntoms: req.body.syntoms,
     disease: req.body.disease,
     prescription: req.body.prescription,
   })
-
+  
   newHistory.save(function (newHistory, err) {
     if (err) {
       res.json(err)
     } else {
+      Patient.findById(id)
+      .then((Patient) => {
+        Patient.histories.push(newHistory._id)
+        Patient.save()
+        .then(() => {
+          res.json()
+        })
+      })
       res.json({
         message: "created",
         history: newHistory
       })
     }
   })
+
+
 })
 
 router.get('/:id', function (req, res, next) {
