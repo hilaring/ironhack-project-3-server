@@ -12,6 +12,8 @@ const auth = require('./routes/auth');
 const patients = require('./routes/patients');
 const histories = require('./routes/histories');
 
+// require('dotenv').config();
+
 mongoose.connect('mongodb://hilaring:Patata12*@ds225703.mlab.com:25703/ih-project-3');
 // mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
 
@@ -23,6 +25,7 @@ const app = express();
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // res.setHeader('Access-Control-Allow-Origin', 'https://imedic-a181d.firebaseapp.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,OPTIONS,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
