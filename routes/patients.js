@@ -61,22 +61,35 @@ router.get('/:id', function (req, res, next) {
 
 router.put('/:id', function (req, res, next) {
   const id = req.params.id;
-  const patientToUpdate = {
-    name: req.body.name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    number: req.body.number,
-    adress: req.body.adress,
-    histories: [],
-  }
+  // const patientToUpdate = {
+  //   name: req.body.name,
+  //   last_name: req.body.last_name,
+  //   email: req.body.email,
+  //   number: req.body.number,
+  //   adress: req.body.adress,
+  //   histories: [],
+  // }
 
-  Patient.findByIdAndUpdate(id, patientToUpdate, function (err) {
+  Patient.findByIdAndUpdate(id, req.body, function (err) {
     if (err) {
       res.json(err)
     } else {
       res.json({ message: "updated" })
     }
   })
+})
+
+router.put('/add-history/:id', (req, res) =>{
+  const {body} = req;
+  const id = req.params.id;
+  console.log(body);
+  Patient.findByIdAndUpdate(id, { $push: { histories: body } })
+    .then((data)=>{
+      res.json(data);
+    })
+    .catch((err)=>{
+      res.json(err);
+    })
 })
 
 router.delete('/:id', function (req, res, next) {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Histo = require('./history');
 
 
 const patientSchema = new Schema({
@@ -8,7 +9,7 @@ const patientSchema = new Schema({
     email: { type: String },
     number: { type: Number },
     adress: { type: String },
-    histories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Histo' }],
+    histories: [Histo.schema],
   }, {
     timestamps: {
       createdAt: 'created_at',
